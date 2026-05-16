@@ -1,0 +1,103 @@
+@use '../variables' as v;
+
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+.login-container {
+  width: 100%;
+  max-width: 400px;
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  border: 1px solid #eee;
+
+  @media (max-width: 480px) {
+    padding: 1.5rem;
+  }
+
+  .login-header {
+    text-align: center;
+    margin-bottom: 2rem;
+
+    h2 {
+      margin: 0;
+      color: v.$primary-color;
+      font-family: v.$font-family;
+      font-size: 1.5rem;
+      letter-spacing: -0.5px;
+    }
+  }
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    label {
+      font-weight: 500;
+      color: #666;
+      font-size: 0.9rem;
+      font-family: v.$font-family;
+    }
+
+    input {
+      padding: 0.85rem;
+      border: 1px solid #e0e0e0;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-family: v.$font-family;
+      transition: all 0.2s ease;
+
+      &:focus {
+        outline: none;
+        border-color: v.$secondary-color;
+        box-shadow: 0 0 0 3px rgba(v.$secondary-color, 0.1);
+      }
+    }
+  }
+
+  .login-button {
+    padding: 0.85rem;
+    background: v.$primary-color;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: v.$font-family;
+    cursor: pointer;
+    transition: background 0.2s ease;
+
+    &:hover {
+      background: rgba(v.$primary-color, 0.9);
+    }
+  }
+}
+
+.login-footer {
+  margin-top: 1.5rem;
+  text-align: center;
+
+  a {
+    color: v.$secondary-color;
+    font-size: 0.85rem;
+    font-family: v.$font-family;
+    text-decoration: underline;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}

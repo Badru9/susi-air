@@ -1,0 +1,90 @@
+// Styles for Home components
+@use '../variables' as v;
+
+.news-scroll {
+  display: flex;
+  overflow-x: auto;
+  gap: 1rem;
+  padding: 1rem 0;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.news-card {
+  min-width: 200px;
+  padding: 1rem;
+  background: white;
+  border-radius: v.$radius-card;
+  box-shadow: v.$shadow-card;
+}
+
+.doc-list {
+  margin-top: 1rem;
+  background: white;
+  padding: 1rem;
+  border-radius: v.$radius-card;
+  box-shadow: v.$shadow-card;
+}
+
+.doc-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+}
+
+.badge {
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  color: white;
+}
+
+.badge-success {
+  background: v.$color-success;
+}
+.badge-warning {
+  background: v.$color-warning;
+}
+.badge-expired {
+  background: v.$color-red;
+}
+
+.flight-card {
+  background: white;
+  padding: 1rem;
+  border-radius: v.$radius-card;
+  box-shadow: v.$shadow-card;
+}
+.route {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: bold;
+}
+
+.chart-container {
+  background: white;
+  padding: 1rem;
+  border-radius: v.$radius-card;
+  margin-top: 1rem;
+}
+.chart-placeholder {
+  height: 150px;
+  background: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.limit-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.card {
+  background: white;
+  padding: 1rem;
+  border-radius: v.$radius-card;
+  box-shadow: v.$shadow-card;
+}
