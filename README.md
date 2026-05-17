@@ -1,75 +1,70 @@
-# Nuxt Minimal Starter
-
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+# Susi Air - Pilot App
 
 ## Setup
 
-Make sure to install dependencies:
-
 ```bash
-# npm
+
+#npm
 npm install
 
-# pnpm
-pnpm install
-
-# yarn
+#yarn
 yarn install
 
-# bun
+#pnpm
+pnpm install
+
+#bun
 bun install
+
 ```
 
-## Development Server
-
-Start the development server on `http://localhost:3000`:
+## Run
 
 ```bash
-# npm
+#npm
 npm run dev
 
-# pnpm
-pnpm dev
-
-# yarn
+#yarn
 yarn dev
 
-# bun
-bun run dev
+#pnpm
+pnpm dev
+
+#bun
+bun dev
 ```
 
-## Production
-
-Build the application for production:
+## Build
 
 ```bash
-# npm
+#npm
 npm run build
 
-# pnpm
-pnpm build
-
-# yarn
+#yarn
 yarn build
 
-# bun
-bun run build
+#pnpm
+pnpm build
+
+#bun
+bun build
 ```
 
-Locally preview production build:
+## Libraries & Rationale
 
-```bash
-# npm
-npm run preview
+- **Nuxt**: Framework for SSR/SEO.
+- **Vue Router**: Navigation.
+- **Pinia**: State management.
+- **Chart.js / vue-chartjs**: Data visualization.
+- **date-fns**: Date manipulation.
+- **lucide-vue-next**: Icons.
 
-# pnpm
-pnpm preview
+## Future Improvements
 
-# yarn
-yarn preview
+- Add robust error handling for API failures.
+- Implement comprehensive unit and integration tests.
+- Enhance accessibility and responsiveness.
 
-# bun
-bun run preview
-```
+## Deployment
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+[Live Demo URL](https://susi-air.vercel.app/) (Deploy to Vercel via: `vercel deploy`)
