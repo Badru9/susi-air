@@ -4,9 +4,18 @@ export default defineNuxtConfig({
     css: {
       preprocessorOptions: {
         scss: {
-          additionalData: `@use "~/assets/styles/_variables.scss" as v; @use "~/assets/styles/_mixins.scss" as m;`,
+          additionalData: `@use "~/assets/styles/variables" as v; @use "~/assets/styles/mixins" as m;`,
         },
       },
+    },
+    optimizeDeps: {
+      include: [
+        '@vue/devtools-core',
+        '@vue/devtools-kit',
+        'date-fns',
+        'date-fns/locale',
+        'lucide-vue-next',
+      ],
     },
   },
   modules: ['@pinia/nuxt'],
@@ -20,5 +29,9 @@ export default defineNuxtConfig({
         },
       ],
     },
+  },
+  compatibilityDate: '2026-05-17',
+  routeRules: {
+    '/login': { appLayout: 'auth' },
   },
 });

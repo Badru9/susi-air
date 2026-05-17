@@ -2,11 +2,22 @@
   <BaseCard class="upcoming-flight-card">
     <h3>Upcoming Flight</h3>
     <div v-if="pilotStore.upcomingFlight" class="flight-details">
-      <p class="flight-date">{{ pilotStore.upcomingFlight.date }} {{ pilotStore.upcomingFlight.time }}</p>
+      <p class="flight-date">
+        {{ $formatDate(new Date(pilotStore.upcomingFlight.date)) }}
+        {{ pilotStore.upcomingFlight.time }}
+      </p>
       <div class="route">
-        <span>{{ pilotStore.upcomingFlight.departure.icao }} ({{ pilotStore.upcomingFlight.departure.city }})</span>
+        <span
+          >{{ pilotStore.upcomingFlight.departure.icao }} ({{
+            pilotStore.upcomingFlight.departure.city
+          }})</span
+        >
         <ArrowRight class="arrow-icon" />
-        <span>{{ pilotStore.upcomingFlight.arrival.icao }} ({{ pilotStore.upcomingFlight.arrival.city }})</span>
+        <span
+          >{{ pilotStore.upcomingFlight.arrival.icao }} ({{
+            pilotStore.upcomingFlight.arrival.city
+          }})</span
+        >
       </div>
     </div>
     <p v-else>No upcoming flights.</p>
@@ -15,8 +26,9 @@
 
 <script setup lang="ts">
 import { ArrowRight } from 'lucide-vue-next';
-import { usePilotStore } from '~/stores/pilot';
+import { usePilotStore } from '../../../stores/pilot';
 import BaseCard from '~/components/common/BaseCard.vue';
+const { $formatDate } = useNuxtApp();
 
 const pilotStore = usePilotStore();
 </script>

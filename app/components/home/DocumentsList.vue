@@ -1,29 +1,42 @@
+<script setup lang="ts">
+import { FileText } from 'lucide-vue-next';
+import { usePilotStore } from '../../../stores/pilot';
+import { useDocumentExpiry } from '../../../composables/useDocumentExpiry';
+import BaseCard from '~/components/common/BaseCard.vue';
+import BadgeStatus from '~/components/common/BadgeStatus.vue';
+
+const pilotStore = usePilotStore();
+
+const getExpiry = (doc: any) => {
+  const { status, daysUntilExpiry } = useDocumentExpiry(doc, pilotStore.today);
+  return { status: status.value, daysUntilExpiry: daysUntilExpiry.value };
+};
+</script>
+
 <template>
   <BaseCard class="documents-list-card">
     <h3>My Documents</h3>
     <ul class="documents-list">
-      <li v-for="doc in pilotStore.documents" :key="doc.id" class="document-item">
+      <li
+        v-for="doc in pilotStore.documents"
+        :key="doc.id"
+        class="document-item"
+      >
         <div class="document-info">
           <FileText class="doc-icon" />
-          <span class="doc-name">{{ doc.name }}</span>
+          <span class="doc-name">{{ doc.label }}</span>
         </div>
-        <BadgeStatus :status="useDocumentExpiry(doc, pilotStore.today).status">
-          {{ useDocumentExpiry(doc, pilotStore.today).daysUntilExpiry < 0 ? 'Expired' : `${useDocumentExpiry(doc, pilotStore.today).daysUntilExpiry} days` }}
+        <BadgeStatus :status="getExpiry(doc).status">
+          {{
+            getExpiry(doc).daysUntilExpiry < 0
+              ? 'Expired'
+              : `${getExpiry(doc).daysUntilExpiry} days`
+          }}
         </BadgeStatus>
       </li>
     </ul>
   </BaseCard>
 </template>
-
-<script setup lang="ts">
-import { FileText } from 'lucide-vue-next';
-import { usePilotStore } from '~/stores/pilot';
-import { useDocumentExpiry } from '~/composables/useDocumentExpiry';
-import BaseCard from '~/components/common/BaseCard.vue';
-import BadgeStatus from '~/components/common/BadgeStatus.vue';
-
-const pilotStore = usePilotStore();
-</script>
 
 <style lang="scss" scoped>
 .documents-list-card {

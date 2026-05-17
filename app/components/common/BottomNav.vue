@@ -16,7 +16,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { Home, Calendar, Book, MoreHorizontal } from 'lucide-vue-next'; // Assume lucide-vue-next is installed
-import { usePilotStore } from '~/stores/pilot';
+import { usePilotStore } from '../../../stores/pilot';
 
 const pilotStore = usePilotStore();
 

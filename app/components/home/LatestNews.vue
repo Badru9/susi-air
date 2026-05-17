@@ -3,9 +3,15 @@
     <h3>Latest News</h3>
     <div class="news-scroll-wrapper">
       <div class="news-cards-container">
-        <BaseCard v-for="item in pilotStore.news" :key="item.id" class="news-card">
+        <BaseCard
+          v-for="item in pilotStore.news"
+          :key="item.id"
+          class="news-card"
+        >
           <h4>{{ item.title }}</h4>
-          <p class="news-date">{{ item.date }}</p>
+          <p class="news-date">
+            {{ $formatDate(item.date) }}
+          </p>
           <p class="news-excerpt">{{ item.excerpt }}</p>
         </BaseCard>
       </div>
@@ -14,8 +20,9 @@
 </template>
 
 <script setup lang="ts">
-import { usePilotStore } from '~/stores/pilot';
+import { usePilotStore } from '../../../stores/pilot';
 import BaseCard from '~/components/common/BaseCard.vue';
+const { $formatDate } = useNuxtApp();
 
 const pilotStore = usePilotStore();
 </script>

@@ -2,8 +2,7 @@
   <NuxtLayout name="auth">
     <div class="login-container">
       <header class="login-header">
-        <img src="/images/susi-air-logo.png" alt="Susi Air Logo" class="susi-air-logo" />
-        <h2>Pilot Login</h2>
+        <img src="/images/logo.png" alt="Susi Air Logo" class="susi-air-logo" />
       </header>
       <form @submit.prevent="handleLogin" class="login-form">
         <div class="form-group">
@@ -12,7 +11,6 @@
             id="username"
             v-model="username"
             type="text"
-            required
             placeholder="Enter your username"
           />
         </div>
@@ -23,7 +21,6 @@
               id="password"
               v-model="password"
               :type="passwordVisible ? 'text' : 'password'"
-              required
               placeholder="Enter your password"
             />
             <button
@@ -38,7 +35,9 @@
         <button type="submit" class="login-button">Sign In</button>
       </form>
       <div class="login-footer">
-        <NuxtLink to="mailto:support@susiair.com">Need help? Contact CRD</NuxtLink>
+        <NuxtLink to="mailto:support@susiair.com"
+          >Need help? Contact CRD</NuxtLink
+        >
       </div>
     </div>
   </NuxtLayout>
@@ -48,7 +47,7 @@
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { Eye, EyeOff } from 'lucide-vue-next';
-import { usePilotStore } from '~/stores/pilot';
+import { usePilotStore } from '../../stores/pilot';
 
 const username = ref('');
 const password = ref('');
@@ -57,12 +56,11 @@ const pilotStore = usePilotStore();
 const router = useRouter();
 
 const handleLogin = () => {
-  if (username.value && password.value) {
-    pilotStore.login(username.value);
-    router.push('/home');
-  } else {
-    alert('Please enter username and password.'); // Basic UX feedback
-  }
+  // if (username.value && password.value) {
+  pilotStore.login(username.value);
+  console.log('Login successful');
+  router.push('/home');
+  // }
 };
 </script>
 
@@ -75,10 +73,14 @@ const handleLogin = () => {
   width: 90%;
   max-width: 380px;
   text-align: center;
+
+  @media (min-width: 768px) {
+    width: 400px;
+  }
 }
 
 .login-header {
-  margin-bottom: 2rem;
+  // margin-bottom: 2rem;
   .susi-air-logo {
     max-width: 150px;
     margin-bottom: 1rem;
@@ -138,7 +140,7 @@ const handleLogin = () => {
   margin-top: 1.5rem;
   transition: background-color 0.3s ease;
   &:hover {
-    background-color: darken(v.$color-red, 10%);
+    background-color: rgba(v.$color-red, 10%);
   }
 }
 

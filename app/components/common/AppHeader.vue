@@ -1,18 +1,25 @@
 <template>
   <header class="app-header">
     <div class="header-left">
-      <h2 class="welcome-message">Good morning, {{ pilotStore.pilot?.name }}</h2>
+      <h2 class="welcome-message">
+        Good morning, {{ pilotStore.pilot?.name }}
+      </h2>
       <div class="total-hours-badge">
-        Total: {{ pilotStore.pilot?.totalHours }} hrs
+        Total: {{ pilotStore.pilot?.totalFlightHours }} hrs
       </div>
     </div>
     <div class="header-right">
       <div class="notification-bell">
         <Bell class="icon" />
-        <span v-if="unreadNotifications > 0" class="badge">{{ unreadNotifications }}</span>
+        <span v-if="unreadNotifications > 0" class="badge">{{
+          unreadNotifications
+        }}</span>
       </div>
       <img
-        :src="pilotStore.pilot?.avatar || '/images/avatar.png'"
+        :src="
+          pilotStore.pilot?.avatar ||
+          'https://images.unsplash.com/photo-1698223532694-2020d939dbd3?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+        "
         alt="Pilot Avatar"
         class="pilot-avatar"
       />
@@ -23,9 +30,12 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { Bell } from 'lucide-vue-next';
-import { usePilotStore } from '~/stores/pilot';
+import { usePilotStore } from '../../../stores/pilot';
 
 const pilotStore = usePilotStore();
+
+console.log('pilot', pilotStore);
+
 const unreadNotifications = ref(3); // Mock unread count
 </script>
 
@@ -58,6 +68,7 @@ const unreadNotifications = ref(3); // Mock unread count
   background-color: v.$color-bg;
   padding: 4px 8px;
   border-radius: 12px;
+  width: fit-content;
 }
 
 .header-right {

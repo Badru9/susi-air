@@ -9,7 +9,9 @@ import {
   format,
 } from 'date-fns';
 
-export function useCalendar(currentMonth: Date) {
+import { isToday } from 'date-fns';
+
+export function useCalendar(currentMonth: Date, schedule: Record<string, string>, today: Date) {
   const daysInMonth = computed(() => {
     const monthStart = startOfMonth(currentMonth);
     const monthEnd = endOfMonth(currentMonth);
@@ -21,6 +23,8 @@ export function useCalendar(currentMonth: Date) {
       isCurrentMonth: isSameMonth(date, currentMonth),
       formattedDate: format(date, 'yyyy-MM-dd'),
       dayOfMonth: format(date, 'd'),
+      isToday: isToday(date),
+      dutyCode: schedule[format(date, 'yyyy-MM-dd')] || null
     }));
   });
 
